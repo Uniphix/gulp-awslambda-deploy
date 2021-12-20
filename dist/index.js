@@ -1,13 +1,14 @@
 "use strict";
 const AWS = require("aws-sdk");
-const gutil = require("gulp-util");
 const through = require("through2");
+const PluginError = require("plugin-error");
+const log = require("fancy-log");
 const DEFAULT_PARAMS = {
     handler: 'index.handler',
     runtime: 'nodejs14.x'
 };
 let gulpError = function (message) {
-    return new gutil.PluginError('gulp-lambda-deploy', message);
+    return new PluginError('gulp-lambda-deploy', message);
 };
 const main = (params, options) => {
     if (!params)
@@ -51,12 +52,12 @@ const main = (params, options) => {
         cb();
     };
     const flush = function (cb) {
-        gutil.log('Uploading Lambda function "' + params.functionName + '"...');
+        log('Uploading Lambda function "' + params.functionName + '"...');
         let stream = this;
         let done = function (err) {
             if (err)
                 return cb(gulpError(err.message));
-            gutil.log('Lambda function "' + params.functionName + '" successfully uploaded');
+            log('Lambda function "' + params.functionName + '" successfully uploaded');
             stream.push(params.file);
             cb();
         };

@@ -1,6 +1,7 @@
 import AWS = require('aws-sdk');
-import gutil = require('gulp-util');
 import through = require('through2');
+import PluginError = require('plugin-error');
+import log = require('fancy-log');
 
 type Params = AWSLambdaDeployParams;
 type Options = AWSLambdaDeployOptions;
@@ -11,7 +12,7 @@ const DEFAULT_PARAMS = {
 };
 
 let gulpError = function (message: string) {
-    return new gutil.PluginError('gulp-lambda-deploy', message);
+    return new PluginError('gulp-lambda-deploy', message);
 };
 
 const main = (params: Params, options: Options) => {
@@ -57,12 +58,12 @@ const main = (params: Params, options: Options) => {
     };
 
     const flush = function (cb: Function) {
-        gutil.log('Uploading Lambda function "' + params.functionName + '"...');
+        log('Uploading Lambda function "' + params.functionName + '"...');
 
         let stream = this;
         let done = function (err?: Error) {
             if (err) return cb(gulpError(err.message));
-            gutil.log('Lambda function "' + params.functionName + '" successfully uploaded');
+            log('Lambda function "' + params.functionName + '" successfully uploaded');
             stream.push(params.file);
             cb();
         };

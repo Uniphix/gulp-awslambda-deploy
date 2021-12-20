@@ -18,12 +18,12 @@
         ],
         "typeRoots": [
             "@types", 
-            "node_modules/@types",
-            "dist/index.d.ts"
+            "node_modules/@types"
         ]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "dist"
     ],
     "compileOnSave": true
 }
