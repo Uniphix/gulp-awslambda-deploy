@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "./dist",
+        "allowJs": false,
+        "watch": false,
+        "sourceRoot": "./src",
+        "lib": [
+            "esnext"
+        ],
+        "typeRoots": [
+            "@types", 
+            "node_modules/@types",
+            "dist/index.d.ts"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compileOnSave": true
+}
