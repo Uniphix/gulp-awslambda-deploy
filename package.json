@@ -1,6 +1,6 @@
 {
     "name": "gulp-awslambda-deploy",
-    "version": "1.0.4",
+    "version": "1.0.7",
     "description": "Gulp plugin to deploy zipped packages to AWS Lambda directly or via S3",
     "main": "dist/index.js",
     "scripts": {

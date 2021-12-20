@@ -1,4 +1,4 @@
-import AWS = require('aws-sdk');
+/// <reference types="aws-sdk" />
 
 declare global {
     type AWSLambdaDeployParams = {
@@ -29,7 +29,5 @@ declare global {
     }
 }
 
-declare module "gulp-awslambda-deploy" {
-    type GulpMainFunction = (params: AWSLambdaDeployParams, options: AWSLambdaDeployOptions) => void
-    export = GulpMainFunction;
-}
+declare function GulpMainFunction(params: AWSLambdaDeployParams, options: AWSLambdaDeployOptions) : NodeJS.WritableStream;
+export = GulpMainFunction;

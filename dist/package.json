@@ -1,10 +1,10 @@
 {
     "name": "gulp-awslambda-deploy",
-    "version": "1.0.1",
+    "version": "1.0.7",
     "description": "Gulp plugin to deploy zipped packages to AWS Lambda directly or via S3",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
-        "publish": "xcopy /F \"package.json\" \"dist\" && xcopy /F \"@types/index.d.ts\" \"dist\" && npm publish dist"
+        "build": "xcopy /F /Y \"package.json\" \"dist\" && xcopy /F /Y \"@types/index.d.ts\" \"dist\""
     },
     "keywords": [
         "gulp",
